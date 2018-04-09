@@ -1,0 +1,12 @@
+c:\users\user\documents\visual studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\RemesasJJ.dll.config
+c:\users\user\documents\visual studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\RemesasJJ.dll
+c:\users\user\documents\visual studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\RemesasJJ.pdb
+c:\users\user\documents\visual studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\EntityFramework.dll
+c:\users\user\documents\visual studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\EntityFramework.xml
+c:\users\user\documents\visual studio 2015\Projects\RemesasJJ\RemesasJJ\obj\Debug\RemesasJJ.dll
+c:\users\user\documents\visual studio 2015\Projects\RemesasJJ\RemesasJJ\obj\Debug\RemesasJJ.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\MySql.Data.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\obj\Debug\RemesasJJ.csprojResolveAssemblyReference.cache

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93a03cb519d842f4ad5910e97d0ad995" Name="Diagram1">
+        <EntityTypeShape EntityType="remesasModel.bancos" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="remesasModel.cedulatype" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="remesasModel.clientes" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="remesasModel.country" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="remesasModel.cuentastype" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="remesasModel.moneda" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="remesasModel.estatus" Width="1.5" PointX="7.5" PointY="3.25" />
+        <EntityTypeShape EntityType="remesasModel.beneficiarios" Width="1.5" PointX="3" PointY="10" />
+        <AssociationConnector Association="remesasModel.beneficiarios_ibfk_1" />
+        <EntityTypeShape EntityType="remesasModel.cambio" Width="1.5" PointX="3.375" PointY="0.875" />
+        <EntityTypeShape EntityType="remesasModel.remesatype" Width="1.5" PointX="7.5" PointY="8.375" />
+        <EntityTypeShape EntityType="remesasModel.pagotype" Width="1.5" PointX="10.375" PointY="1.625" />
+        <EntityTypeShape EntityType="remesasModel.pagosremesa" Width="1.5" PointX="12.625" PointY="1" />
+        <AssociationConnector Association="remesasModel.pagosremesa_ibfk_1" />
+        <EntityTypeShape EntityType="remesasModel.remesas" Width="1.5" PointX="9.75" PointY="5.5" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_1" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_3" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_4" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_6" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_5" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_7" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_8" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_9" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
