@@ -94,6 +94,7 @@
     <Compile Include="Logics\Change.cs" />
     <Compile Include="Logics\Clients.cs" />
     <Compile Include="Logics\Remesa.cs" />
+    <Compile Include="Logics\SendGrid.cs" />
     <Compile Include="Models\PagoEstatus.cs" />
     <Compile Include="moneda.cs">
       <DependentUpon>remesas.tt</DependentUpon>
@@ -127,6 +128,9 @@
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositorys\BaseRepository.cs" />
+    <Compile Include="sendgrid.cs">
+      <DependentUpon>remesas.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

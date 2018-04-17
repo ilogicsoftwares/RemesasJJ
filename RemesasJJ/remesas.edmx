@@ -152,6 +152,13 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="sendgrid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="llave" Type="char" MaxLength="200" Nullable="false" />
+        </EntityType>
         <Association Name="beneficiarios_ibfk_1">
           <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
           <End Role="beneficiarios" Type="Self.beneficiarios" Multiplicity="*" />
@@ -289,6 +296,7 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
           <EntitySet Name="pagotype" EntityType="Self.pagotype" Schema="remesas" store:Type="Tables" />
           <EntitySet Name="remesas" EntityType="Self.remesas" Schema="remesas" store:Type="Tables" />
           <EntitySet Name="remesatype" EntityType="Self.remesatype" Schema="remesas" store:Type="Tables" />
+          <EntitySet Name="sendgrid" EntityType="Self.sendgrid" Schema="remesas" store:Type="Tables" />
           <AssociationSet Name="beneficiarios_ibfk_1" Association="Self.beneficiarios_ibfk_1">
             <End Role="clientes" EntitySet="clientes" />
             <End Role="beneficiarios" EntitySet="beneficiarios" />
@@ -449,6 +457,7 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
             <End Role="remesatype" EntitySet="remesatype" />
             <End Role="remesas" EntitySet="remesas" />
           </AssociationSet>
+          <EntitySet Name="sendgrid" EntityType="remesasModel.sendgrid" />
           </EntityContainer>
         <EntityType Name="estatus">
           <Key>
@@ -676,6 +685,13 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="sendgrid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="llave" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -835,6 +851,14 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="beneficiarioid" ColumnName="beneficiarioid" />
                 <ScalarProperty Name="clienteid" ColumnName="clienteid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sendgrid">
+            <EntityTypeMapping TypeName="remesasModel.sendgrid">
+              <MappingFragment StoreEntitySet="sendgrid">
+                <ScalarProperty Name="llave" ColumnName="llave" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

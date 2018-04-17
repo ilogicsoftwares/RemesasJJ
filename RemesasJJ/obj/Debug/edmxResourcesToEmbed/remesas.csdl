@@ -115,6 +115,7 @@
       <End Role="remesatype" EntitySet="remesatype" />
       <End Role="remesas" EntitySet="remesas" />
     </AssociationSet>
+    <EntitySet Name="sendgrid" EntityType="remesasModel.sendgrid" />
   </EntityContainer>
   <EntityType Name="estatus">
     <Key>
@@ -342,4 +343,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="sendgrid">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="llave" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

@@ -38,5 +38,6 @@ namespace RemesasJJ
         public DbSet<pagotype> pagotype { get; set; }
         public DbSet<pagosremesa> pagosremesa { get; set; }
         public DbSet<remesas> remesas { get; set; }
+        public DbSet<sendgrid> sendgrid { get; set; }
     }
 }

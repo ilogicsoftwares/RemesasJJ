@@ -147,6 +147,13 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="sendgrid">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="llave" Type="char" MaxLength="200" Nullable="false" />
+  </EntityType>
   <Association Name="beneficiarios_ibfk_1">
     <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
     <End Role="beneficiarios" Type="Self.beneficiarios" Multiplicity="*" />
@@ -284,6 +291,7 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
     <EntitySet Name="pagotype" EntityType="Self.pagotype" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="remesas" EntityType="Self.remesas" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="remesatype" EntityType="Self.remesatype" Schema="remesas" store:Type="Tables" />
+    <EntitySet Name="sendgrid" EntityType="Self.sendgrid" Schema="remesas" store:Type="Tables" />
     <AssociationSet Name="beneficiarios_ibfk_1" Association="Self.beneficiarios_ibfk_1">
       <End Role="clientes" EntitySet="clientes" />
       <End Role="beneficiarios" EntitySet="beneficiarios" />

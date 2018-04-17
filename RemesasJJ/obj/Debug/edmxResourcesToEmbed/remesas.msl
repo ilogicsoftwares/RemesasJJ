@@ -158,5 +158,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sendgrid">
+      <EntityTypeMapping TypeName="remesasModel.sendgrid">
+        <MappingFragment StoreEntitySet="sendgrid">
+          <ScalarProperty Name="llave" ColumnName="llave" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
