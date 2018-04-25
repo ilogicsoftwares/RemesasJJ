@@ -12,16 +12,19 @@ namespace RemesasJJ
     using System;
     using System.Collections.Generic;
     
-    public partial class moneda
+    public partial class bancosempre
     {
-        public moneda()
+        public bancosempre()
         {
             this.remesas = new HashSet<remesas>();
         }
     
         public int id { get; set; }
         public string nombre { get; set; }
-        public string sing { get; set; }
+        public int cuentaType { get; set; }
+        public string cuentaNumero { get; set; }
+        public string titular { get; set; }
+        public string titularCedula { get; set; }
     
         public virtual ICollection<remesas> remesas { get; set; }
     }

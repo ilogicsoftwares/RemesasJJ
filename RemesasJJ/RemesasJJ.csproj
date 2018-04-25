@@ -68,6 +68,9 @@
     <Compile Include="bancos.cs">
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>
+    <Compile Include="bancosempre.cs">
+      <DependentUpon>remesas.tt</DependentUpon>
+    </Compile>
     <Compile Include="beneficiarios.cs">
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>

@@ -74,6 +74,7 @@ namespace RemesasJJ.Logics
             Update(entity);
         }
 
+
         public void Insert(remesas entity)
         {
             context.remesas.Add(entity);

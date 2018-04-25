@@ -39,14 +39,17 @@ namespace RemesasJJ
         public string ticketSerial { get; set; }
         public int remesaType { get; set; }
         public string file { get; set; }
+        public string idtransf { get; set; }
+        public Nullable<int> bancoDeposito { get; set; }
     
         public virtual bancos bancos { get; set; }
+        public virtual bancosempre bancosempre { get; set; }
         public virtual cambio cambio { get; set; }
         public virtual clientes clientes { get; set; }
         public virtual country country { get; set; }
         public virtual cuentastype cuentastype { get; set; }
         public virtual estatus estatus1 { get; set; }
+        public virtual moneda moneda { get; set; }
         public virtual remesatype remesatype1 { get; set; }
-        public virtual remesatype remesatype2 { get; set; }
     }
 }

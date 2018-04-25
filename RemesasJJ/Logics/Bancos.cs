@@ -22,6 +22,11 @@ namespace RemesasJJ.Logics
             var lista = context.bancos.ToList();
             return lista;
         }
+        public IEnumerable<bancosempre> GetAllEmpre()
+        {
+            var lista = context.bancosempre.ToList();
+            return lista;
+        }
 
         public bancos GetByID(int id)
         {

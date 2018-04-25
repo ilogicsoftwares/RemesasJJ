@@ -17,13 +17,11 @@ namespace RemesasJJ
         public remesatype()
         {
             this.remesas = new HashSet<remesas>();
-            this.remesas1 = new HashSet<remesas>();
         }
     
         public int id { get; set; }
         public string descripcion { get; set; }
     
         public virtual ICollection<remesas> remesas { get; set; }
-        public virtual ICollection<remesas> remesas1 { get; set; }
     }
 }
