@@ -74,6 +74,28 @@ namespace RemesasJJ.Logics
             Update(entity);
         }
 
+        public bool?  processRemesa(int id, string idDeposito, string idTransf, int idBanco)
+        {
+            var exist=getByTicketId(idDeposito);
+            if (exist != null)
+                return false;
+
+            try {
+                var remesa = GetByID(id);
+                remesa.ticketSerial = idDeposito;
+                remesa.idtransf = idTransf;
+                remesa.fechaTransf = DateTime.Now;
+                remesa.bancoDeposito = idBanco;
+                remesa.estatus = 2;
+                Update(remesa);
+                Save();
+                return true;
+            }catch(Exception ex)
+            {
+                return false;
+            }
+  
+        }
 
         public void Insert(remesas entity)
         {
