@@ -25,7 +25,11 @@ namespace RemesasJJ
         public string cuentaNumero { get; set; }
         public string titular { get; set; }
         public string titularCedula { get; set; }
+        public Nullable<int> monedaID { get; set; }
+        public int cuentaTrans { get; set; }
     
+        public virtual moneda moneda { get; set; }
+        public virtual cuentastype cuentastype { get; set; }
         public virtual ICollection<remesas> remesas { get; set; }
     }
 }

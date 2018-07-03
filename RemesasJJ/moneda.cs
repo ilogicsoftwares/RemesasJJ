@@ -16,6 +16,8 @@ namespace RemesasJJ
     {
         public moneda()
         {
+            this.bancosempre = new HashSet<bancosempre>();
+            this.bancostrans = new HashSet<bancostrans>();
             this.remesas = new HashSet<remesas>();
         }
     
@@ -23,6 +25,8 @@ namespace RemesasJJ
         public string nombre { get; set; }
         public string sing { get; set; }
     
+        public virtual ICollection<bancosempre> bancosempre { get; set; }
+        public virtual ICollection<bancostrans> bancostrans { get; set; }
         public virtual ICollection<remesas> remesas { get; set; }
     }
 }

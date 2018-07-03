@@ -41,6 +41,19 @@ namespace RemesasJJ.Logics
             return cambio;
 
         }
+        public cambio GetActualChange(DateTime date)
+        {
+
+            var fecha = date;
+            var cambio = context.cambio.ToList().Where(x => x.fecha.Value.Date == fecha.Date).OrderByDescending(x => x.fecha).FirstOrDefault();
+
+            if (cambio == null)
+            {
+                cambio = context.cambio.ToList().Last();
+            }
+            return cambio;
+
+        }
 
         public void Insert(cambio entity)
         {

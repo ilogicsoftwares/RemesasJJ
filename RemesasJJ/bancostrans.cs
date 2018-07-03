@@ -12,17 +12,24 @@ namespace RemesasJJ
     using System;
     using System.Collections.Generic;
     
-    public partial class cedulatype
+    public partial class bancostrans
     {
-        public cedulatype()
+        public bancostrans()
         {
             this.remesas = new HashSet<remesas>();
         }
     
         public int id { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
+        public int cuentaType { get; set; }
+        public string cuentaNumero { get; set; }
+        public string titular { get; set; }
+        public string titularCedula { get; set; }
+        public Nullable<int> monedaID { get; set; }
+        public int cuentaTrans { get; set; }
     
+        public virtual moneda moneda { get; set; }
+        public virtual cuentastype cuentastype { get; set; }
         public virtual ICollection<remesas> remesas { get; set; }
     }
 }

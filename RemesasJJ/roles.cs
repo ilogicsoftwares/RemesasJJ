@@ -12,17 +12,16 @@ namespace RemesasJJ
     using System;
     using System.Collections.Generic;
     
-    public partial class cedulatype
+    public partial class roles
     {
-        public cedulatype()
+        public roles()
         {
-            this.remesas = new HashSet<remesas>();
+            this.users = new HashSet<users>();
         }
     
         public int id { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
+        public string name { get; set; }
     
-        public virtual ICollection<remesas> remesas { get; set; }
+        public virtual ICollection<users> users { get; set; }
     }
 }

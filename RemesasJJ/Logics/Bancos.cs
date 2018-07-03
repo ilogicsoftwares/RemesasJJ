@@ -33,6 +33,11 @@ namespace RemesasJJ.Logics
             var entity = context.bancos.FirstOrDefault(x => x.id == id);
             return entity;
         }
+        public bancosempre GetEmpreByID(int id)
+        {
+            var entity = context.bancosempre.FirstOrDefault(x => x.id == id);
+            return entity;
+        }
 
         public void Insert(bancos entity)
         {

@@ -41,10 +41,15 @@ namespace RemesasJJ
         public string file { get; set; }
         public string idtransf { get; set; }
         public Nullable<int> bancoDeposito { get; set; }
+        public string imgTrans { get; set; }
+        public Nullable<int> BancoTrans { get; set; }
+        public string unulaDetail { get; set; }
     
         public virtual bancos bancos { get; set; }
         public virtual bancosempre bancosempre { get; set; }
+        public virtual bancostrans bancostrans { get; set; }
         public virtual cambio cambio { get; set; }
+        public virtual cedulatype cedulatype { get; set; }
         public virtual clientes clientes { get; set; }
         public virtual country country { get; set; }
         public virtual cuentastype cuentastype { get; set; }

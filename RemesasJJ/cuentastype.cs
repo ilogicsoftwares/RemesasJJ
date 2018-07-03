@@ -16,12 +16,16 @@ namespace RemesasJJ
     {
         public cuentastype()
         {
+            this.bancosempre = new HashSet<bancosempre>();
+            this.bancostrans = new HashSet<bancostrans>();
             this.remesas = new HashSet<remesas>();
         }
     
         public int id { get; set; }
         public string nombre { get; set; }
     
+        public virtual ICollection<bancosempre> bancosempre { get; set; }
+        public virtual ICollection<bancostrans> bancostrans { get; set; }
         public virtual ICollection<remesas> remesas { get; set; }
     }
 }

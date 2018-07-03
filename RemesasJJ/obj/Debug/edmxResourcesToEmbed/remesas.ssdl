@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="remesasModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="acesos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="link" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
   <EntityType Name="bancos">
     <Key>
       <PropertyRef Name="id" />
@@ -21,6 +29,21 @@
     <Property Name="cuentaNumero" Type="varchar" MaxLength="20" />
     <Property Name="titular" Type="varchar" MaxLength="100" />
     <Property Name="titularCedula" Type="varchar" MaxLength="8" />
+    <Property Name="monedaID" Type="int" />
+    <Property Name="cuentaTrans" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bancostrans">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cuentaType" Type="int" Nullable="false" />
+    <Property Name="cuentaNumero" Type="varchar" MaxLength="20" />
+    <Property Name="titular" Type="varchar" MaxLength="100" />
+    <Property Name="titularCedula" Type="varchar" MaxLength="8" />
+    <Property Name="monedaID" Type="int" />
+    <Property Name="cuentaTrans" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="beneficiarios">
     <Key>
@@ -140,7 +163,7 @@
     <Property Name="telefonoCliente" Type="varchar" MaxLength="100" />
     <Property Name="correoCliente" Type="varchar" MaxLength="100" />
     <Property Name="nombreBenef" Type="varchar" MaxLength="100" />
-    <Property Name="cedulaBenef" Type="varchar" MaxLength="8" />
+    <Property Name="cedulaBenef" Type="varchar" MaxLength="10" />
     <Property Name="cedulaBenefType" Type="int" />
     <Property Name="cuentaBenef" Type="varchar" MaxLength="20" />
     <Property Name="cuentaBenefType" Type="int" />
@@ -152,6 +175,9 @@
     <Property Name="file" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="idtransf" Type="varchar" MaxLength="200" />
     <Property Name="bancoDeposito" Type="int" />
+    <Property Name="imgTrans" Type="varchar" MaxLength="200" />
+    <Property Name="BancoTrans" Type="int" />
+    <Property Name="unulaDetail" Type="text" />
   </EntityType>
   <EntityType Name="remesatype">
     <Key>
@@ -160,6 +186,21 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="roleacess">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleid" Type="int" Nullable="false" />
+    <Property Name="acesosid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
   <EntityType Name="sendgrid">
     <Key>
       <PropertyRef Name="id" />
@@ -167,6 +208,72 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="llave" Type="char" MaxLength="200" Nullable="false" />
   </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="clave" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="nombrex" Type="varchar" MaxLength="50" />
+    <Property Name="apellidos" Type="varchar" MaxLength="50" />
+    <Property Name="dni" Type="varchar" MaxLength="10" />
+    <Property Name="fechanac" Type="date" />
+    <Property Name="telefonos" Type="varchar" MaxLength="100" />
+    <Property Name="genero" Type="varchar" MaxLength="20" />
+    <Property Name="direccionEntrega" Type="longtext" />
+    <Property Name="roleid" Type="int" />
+  </EntityType>
+  <Association Name="bancosempre_ibfk_1">
+    <End Role="moneda" Type="Self.moneda" Multiplicity="0..1" />
+    <End Role="bancosempre" Type="Self.bancosempre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moneda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancosempre">
+        <PropertyRef Name="monedaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bancosempre_ibfk_2">
+    <End Role="cuentastype" Type="Self.cuentastype" Multiplicity="1" />
+    <End Role="bancosempre" Type="Self.bancosempre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentastype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancosempre">
+        <PropertyRef Name="cuentaType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bancostrans_ibfk_1">
+    <End Role="moneda" Type="Self.moneda" Multiplicity="0..1" />
+    <End Role="bancostrans" Type="Self.bancostrans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moneda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancostrans">
+        <PropertyRef Name="monedaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bancostrans_ibfk_2">
+    <End Role="cuentastype" Type="Self.cuentastype" Multiplicity="1" />
+    <End Role="bancostrans" Type="Self.bancostrans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentastype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancostrans">
+        <PropertyRef Name="cuentaType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="beneficiarios_ibfk_1">
     <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
     <End Role="beneficiarios" Type="Self.beneficiarios" Multiplicity="*" />
@@ -212,6 +319,30 @@
       </Principal>
       <Dependent Role="remesas">
         <PropertyRef Name="monedaDeposito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="remesas_ibfk_11">
+    <End Role="cedulatype" Type="Self.cedulatype" Multiplicity="0..1" />
+    <End Role="remesas" Type="Self.remesas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cedulatype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="remesas">
+        <PropertyRef Name="cedulaBenefType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="remesas_ibfk_12">
+    <End Role="bancostrans" Type="Self.bancostrans" Multiplicity="0..1" />
+    <End Role="remesas" Type="Self.remesas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bancostrans">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="remesas">
+        <PropertyRef Name="BancoTrans" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -302,9 +433,23 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="users_ibfk_1">
+    <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="remesasModelStoreContainer">
+    <EntitySet Name="acesos" EntityType="Self.acesos" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="bancos" EntityType="Self.bancos" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="bancosempre" EntityType="Self.bancosempre" Schema="remesas" store:Type="Tables" />
+    <EntitySet Name="bancostrans" EntityType="Self.bancostrans" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="beneficiarios" EntityType="Self.beneficiarios" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="cambio" EntityType="Self.cambio" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="cedulatype" EntityType="Self.cedulatype" Schema="remesas" store:Type="Tables" />
@@ -317,7 +462,26 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
     <EntitySet Name="pagotype" EntityType="Self.pagotype" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="remesas" EntityType="Self.remesas" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="remesatype" EntityType="Self.remesatype" Schema="remesas" store:Type="Tables" />
+    <EntitySet Name="roleacess" EntityType="Self.roleacess" Schema="remesas" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="remesas" store:Type="Tables" />
     <EntitySet Name="sendgrid" EntityType="Self.sendgrid" Schema="remesas" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="remesas" store:Type="Tables" />
+    <AssociationSet Name="bancosempre_ibfk_1" Association="Self.bancosempre_ibfk_1">
+      <End Role="moneda" EntitySet="moneda" />
+      <End Role="bancosempre" EntitySet="bancosempre" />
+    </AssociationSet>
+    <AssociationSet Name="bancosempre_ibfk_2" Association="Self.bancosempre_ibfk_2">
+      <End Role="cuentastype" EntitySet="cuentastype" />
+      <End Role="bancosempre" EntitySet="bancosempre" />
+    </AssociationSet>
+    <AssociationSet Name="bancostrans_ibfk_1" Association="Self.bancostrans_ibfk_1">
+      <End Role="moneda" EntitySet="moneda" />
+      <End Role="bancostrans" EntitySet="bancostrans" />
+    </AssociationSet>
+    <AssociationSet Name="bancostrans_ibfk_2" Association="Self.bancostrans_ibfk_2">
+      <End Role="cuentastype" EntitySet="cuentastype" />
+      <End Role="bancostrans" EntitySet="bancostrans" />
+    </AssociationSet>
     <AssociationSet Name="beneficiarios_ibfk_1" Association="Self.beneficiarios_ibfk_1">
       <End Role="clientes" EntitySet="clientes" />
       <End Role="beneficiarios" EntitySet="beneficiarios" />
@@ -332,6 +496,14 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
     </AssociationSet>
     <AssociationSet Name="remesas_ibfk_10" Association="Self.remesas_ibfk_10">
       <End Role="moneda" EntitySet="moneda" />
+      <End Role="remesas" EntitySet="remesas" />
+    </AssociationSet>
+    <AssociationSet Name="remesas_ibfk_11" Association="Self.remesas_ibfk_11">
+      <End Role="cedulatype" EntitySet="cedulatype" />
+      <End Role="remesas" EntitySet="remesas" />
+    </AssociationSet>
+    <AssociationSet Name="remesas_ibfk_12" Association="Self.remesas_ibfk_12">
+      <End Role="bancostrans" EntitySet="bancostrans" />
       <End Role="remesas" EntitySet="remesas" />
     </AssociationSet>
     <AssociationSet Name="remesas_ibfk_3" Association="Self.remesas_ibfk_3">
@@ -361,6 +533,10 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
     <AssociationSet Name="remesas_ibfk_9" Association="Self.remesas_ibfk_9">
       <End Role="bancosempre" EntitySet="bancosempre" />
       <End Role="remesas" EntitySet="remesas" />
+    </AssociationSet>
+    <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

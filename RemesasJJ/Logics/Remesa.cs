@@ -27,7 +27,7 @@ namespace RemesasJJ.Logics
 
         public IEnumerable<remesas> GetAll()
         {
-            var lista = context.remesas.Include("Bancos").OrderByDescending(x=>x.id).ToList();
+            var lista = context.remesas.Include("Bancos").OrderByDescending(x=>x.id).Take(3000).ToList();
             
             return lista;
         }
@@ -39,7 +39,9 @@ namespace RemesasJJ.Logics
         }
         public IEnumerable<remesas> GetByFecha(DateTime date)
         {
-            var entity = context.remesas.Where(x => x.fecha == date).ToList();
+            var entity = context.remesas.Include("bancosempre").ToList().Where(x => x.fecha.Value.Date.Equals(date.Date));
+
+
             return entity;
         }
 
@@ -74,7 +76,7 @@ namespace RemesasJJ.Logics
             Update(entity);
         }
 
-        public bool?  processRemesa(int id, string idDeposito, string idTransf, int idBanco)
+        public bool?  processRemesa(int id, string idDeposito, string idTransf, int idBanco,int BancoTrans)
         {
             var exist=getByTicketId(idDeposito);
             if (exist != null)
@@ -87,6 +89,7 @@ namespace RemesasJJ.Logics
                 remesa.fechaTransf = DateTime.Now;
                 remesa.bancoDeposito = idBanco;
                 remesa.estatus = 2;
+                remesa.BancoTrans = BancoTrans;
                 Update(remesa);
                 Save();
                 return true;

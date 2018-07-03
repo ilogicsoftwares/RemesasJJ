@@ -65,10 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="acesos.cs">
+      <DependentUpon>remesas.tt</DependentUpon>
+    </Compile>
     <Compile Include="bancos.cs">
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>
     <Compile Include="bancosempre.cs">
+      <DependentUpon>remesas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bancostrans.cs">
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>
     <Compile Include="beneficiarios.cs">
@@ -93,6 +99,7 @@
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBaseEntity.cs" />
+    <Compile Include="Logics\Usuarios.cs" />
     <Compile Include="Logics\Bancos.cs" />
     <Compile Include="Logics\Change.cs" />
     <Compile Include="Logics\Clients.cs" />
@@ -131,7 +138,16 @@
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositorys\BaseRepository.cs" />
+    <Compile Include="roleacess.cs">
+      <DependentUpon>remesas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="roles.cs">
+      <DependentUpon>remesas.tt</DependentUpon>
+    </Compile>
     <Compile Include="sendgrid.cs">
+      <DependentUpon>remesas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="users.cs">
       <DependentUpon>remesas.tt</DependentUpon>
     </Compile>
   </ItemGroup>
