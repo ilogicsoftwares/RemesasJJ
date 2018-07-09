@@ -199,24 +199,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="acesos">
-      <EntityTypeMapping TypeName="remesasModel.acesos">
-        <MappingFragment StoreEntitySet="acesos">
-          <ScalarProperty Name="link" ColumnName="link" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="roleacess">
-      <EntityTypeMapping TypeName="remesasModel.roleacess">
-        <MappingFragment StoreEntitySet="roleacess">
-          <ScalarProperty Name="acesosid" ColumnName="acesosid" />
-          <ScalarProperty Name="roleid" ColumnName="roleid" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="roles">
       <EntityTypeMapping TypeName="remesasModel.roles">
         <MappingFragment StoreEntitySet="roles">
@@ -240,6 +222,25 @@
           <ScalarProperty Name="clave" ColumnName="clave" />
           <ScalarProperty Name="correo" ColumnName="correo" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="acesos">
+      <EntityTypeMapping TypeName="remesasModel.acesos">
+        <MappingFragment StoreEntitySet="acesos">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roleacess">
+      <EntityTypeMapping TypeName="remesasModel.roleacess">
+        <MappingFragment StoreEntitySet="roleacess">
+          <ScalarProperty Name="acesosid" ColumnName="acesosid" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

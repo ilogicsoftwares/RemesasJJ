@@ -41,9 +41,9 @@ namespace RemesasJJ
         public DbSet<bancosempre> bancosempre { get; set; }
         public DbSet<bancostrans> bancostrans { get; set; }
         public DbSet<remesas> remesas { get; set; }
-        public DbSet<acesos> acesos { get; set; }
-        public DbSet<roleacess> roleacess { get; set; }
         public DbSet<roles> roles { get; set; }
         public DbSet<users> users { get; set; }
+        public DbSet<acesos> acesos { get; set; }
+        public DbSet<roleacess> roleacess { get; set; }
     }
 }

@@ -110,13 +110,21 @@
       <End Role="remesatype" EntitySet="remesatype" />
       <End Role="remesas" EntitySet="remesas" />
     </AssociationSet>
-    <EntitySet Name="acesos" EntityType="remesasModel.acesos" />
-    <EntitySet Name="roleacess" EntityType="remesasModel.roleacess" />
     <EntitySet Name="roles" EntityType="remesasModel.roles" />
     <EntitySet Name="users" EntityType="remesasModel.users" />
     <AssociationSet Name="users_ibfk_1" Association="remesasModel.users_ibfk_1">
       <End Role="roles" EntitySet="roles" />
       <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <EntitySet Name="acesos" EntityType="remesasModel.acesos" />
+    <EntitySet Name="roleacess" EntityType="remesasModel.roleacess" />
+    <AssociationSet Name="roleacess_ibfk_2" Association="remesasModel.roleacess_ibfk_2">
+      <End Role="acesos" EntitySet="acesos" />
+      <End Role="roleacess" EntitySet="roleacess" />
+    </AssociationSet>
+    <AssociationSet Name="roleacess_ibfk_1" Association="remesasModel.roleacess_ibfk_1">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="roleacess" EntitySet="roleacess" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="estatus">
@@ -517,22 +525,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="acesos">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="link" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="roleacess">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="roleid" Type="Int32" Nullable="false" />
-    <Property Name="acesosid" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="roles">
     <Key>
       <PropertyRef Name="id" />
@@ -540,6 +532,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="users" Relationship="remesasModel.users_ibfk_1" FromRole="roles" ToRole="users" />
+    <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roles" ToRole="roleacess" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -568,6 +561,50 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="users">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="acesos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="link" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="SByte" Nullable="false" />
+    <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_2" FromRole="acesos" ToRole="roleacess" />
+  </EntityType>
+  <EntityType Name="roleacess">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleid" Type="Int32" Nullable="false" />
+    <Property Name="acesosid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="acesos" Relationship="remesasModel.roleacess_ibfk_2" FromRole="roleacess" ToRole="acesos" />
+    <NavigationProperty Name="roles" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roleacess" ToRole="roles" />
+  </EntityType>
+  <Association Name="roleacess_ibfk_2">
+    <End Type="remesasModel.acesos" Role="acesos" Multiplicity="1" />
+    <End Type="remesasModel.roleacess" Role="roleacess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="acesos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleacess">
+        <PropertyRef Name="acesosid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="roleacess_ibfk_1">
+    <End Type="remesasModel.roles" Role="roles" Multiplicity="1" />
+    <End Type="remesasModel.roleacess" Role="roleacess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleacess">
         <PropertyRef Name="roleid" />
       </Dependent>
     </ReferentialConstraint>

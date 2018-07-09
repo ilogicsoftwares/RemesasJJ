@@ -17,5 +17,8 @@ namespace RemesasJJ
         public int id { get; set; }
         public int roleid { get; set; }
         public int acesosid { get; set; }
+    
+        public virtual acesos acesos { get; set; }
+        public virtual roles roles { get; set; }
     }
 }

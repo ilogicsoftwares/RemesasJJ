@@ -14,8 +14,16 @@ namespace RemesasJJ
     
     public partial class acesos
     {
+        public acesos()
+        {
+            this.roleacess = new HashSet<roleacess>();
+        }
+    
         public int id { get; set; }
         public string nombre { get; set; }
         public string link { get; set; }
+        public sbyte active { get; set; }
+    
+        public virtual ICollection<roleacess> roleacess { get; set; }
     }
 }

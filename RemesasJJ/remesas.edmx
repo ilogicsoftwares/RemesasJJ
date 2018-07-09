@@ -12,6 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="link" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="active" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="bancos">
           <Key>
@@ -438,6 +439,30 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="roleacess_ibfk_1">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="roleacess" Type="Self.roleacess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roleacess">
+              <PropertyRef Name="roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="roleacess_ibfk_2">
+          <End Role="acesos" Type="Self.acesos" Multiplicity="1" />
+          <End Role="roleacess" Type="Self.roleacess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acesos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roleacess">
+              <PropertyRef Name="acesosid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="users_ibfk_1">
           <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -538,6 +563,14 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
           <AssociationSet Name="remesas_ibfk_9" Association="Self.remesas_ibfk_9">
             <End Role="bancosempre" EntitySet="bancosempre" />
             <End Role="remesas" EntitySet="remesas" />
+          </AssociationSet>
+          <AssociationSet Name="roleacess_ibfk_1" Association="Self.roleacess_ibfk_1">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="roleacess" EntitySet="roleacess" />
+          </AssociationSet>
+          <AssociationSet Name="roleacess_ibfk_2" Association="Self.roleacess_ibfk_2">
+            <End Role="acesos" EntitySet="acesos" />
+            <End Role="roleacess" EntitySet="roleacess" />
           </AssociationSet>
           <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
             <End Role="roles" EntitySet="roles" />
@@ -658,13 +691,21 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
             <End Role="remesatype" EntitySet="remesatype" />
             <End Role="remesas" EntitySet="remesas" />
           </AssociationSet>
-          <EntitySet Name="acesos" EntityType="remesasModel.acesos" />
-          <EntitySet Name="roleacess" EntityType="remesasModel.roleacess" />
           <EntitySet Name="roles" EntityType="remesasModel.roles" />
           <EntitySet Name="users" EntityType="remesasModel.users" />
           <AssociationSet Name="users_ibfk_1" Association="remesasModel.users_ibfk_1">
             <End Role="roles" EntitySet="roles" />
             <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <EntitySet Name="acesos" EntityType="remesasModel.acesos" />
+          <EntitySet Name="roleacess" EntityType="remesasModel.roleacess" />
+          <AssociationSet Name="roleacess_ibfk_2" Association="remesasModel.roleacess_ibfk_2">
+            <End Role="acesos" EntitySet="acesos" />
+            <End Role="roleacess" EntitySet="roleacess" />
+          </AssociationSet>
+          <AssociationSet Name="roleacess_ibfk_1" Association="remesasModel.roleacess_ibfk_1">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="roleacess" EntitySet="roleacess" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="estatus">
@@ -1065,22 +1106,6 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="acesos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="link" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="roleacess">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="roleid" Type="Int32" Nullable="false" />
-          <Property Name="acesosid" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="roles">
           <Key>
             <PropertyRef Name="id" />
@@ -1088,6 +1113,7 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="users" Relationship="remesasModel.users_ibfk_1" FromRole="roles" ToRole="users" />
+          <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roles" ToRole="roleacess" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -1116,6 +1142,50 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="users">
+              <PropertyRef Name="roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="acesos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_2" FromRole="acesos" ToRole="roleacess" />
+        </EntityType>
+        <EntityType Name="roleacess">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleid" Type="Int32" Nullable="false" />
+          <Property Name="acesosid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="acesos" Relationship="remesasModel.roleacess_ibfk_2" FromRole="roleacess" ToRole="acesos" />
+          <NavigationProperty Name="roles" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roleacess" ToRole="roles" />
+        </EntityType>
+        <Association Name="roleacess_ibfk_2">
+          <End Type="remesasModel.acesos" Role="acesos" Multiplicity="1" />
+          <End Type="remesasModel.roleacess" Role="roleacess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acesos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roleacess">
+              <PropertyRef Name="acesosid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="roleacess_ibfk_1">
+          <End Type="remesasModel.roles" Role="roles" Multiplicity="1" />
+          <End Type="remesasModel.roleacess" Role="roleacess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roleacess">
               <PropertyRef Name="roleid" />
             </Dependent>
           </ReferentialConstraint>
@@ -1324,24 +1394,6 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="acesos">
-            <EntityTypeMapping TypeName="remesasModel.acesos">
-              <MappingFragment StoreEntitySet="acesos">
-                <ScalarProperty Name="link" ColumnName="link" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="roleacess">
-            <EntityTypeMapping TypeName="remesasModel.roleacess">
-              <MappingFragment StoreEntitySet="roleacess">
-                <ScalarProperty Name="acesosid" ColumnName="acesosid" />
-                <ScalarProperty Name="roleid" ColumnName="roleid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="roles">
             <EntityTypeMapping TypeName="remesasModel.roles">
               <MappingFragment StoreEntitySet="roles">
@@ -1365,6 +1417,25 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
                 <ScalarProperty Name="clave" ColumnName="clave" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acesos">
+            <EntityTypeMapping TypeName="remesasModel.acesos">
+              <MappingFragment StoreEntitySet="acesos">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roleacess">
+            <EntityTypeMapping TypeName="remesasModel.roleacess">
+              <MappingFragment StoreEntitySet="roleacess">
+                <ScalarProperty Name="acesosid" ColumnName="acesosid" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -7,6 +7,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="link" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="bancos">
     <Key>
@@ -433,6 +434,30 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="roleacess_ibfk_1">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="roleacess" Type="Self.roleacess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleacess">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="roleacess_ibfk_2">
+    <End Role="acesos" Type="Self.acesos" Multiplicity="1" />
+    <End Role="roleacess" Type="Self.roleacess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="acesos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleacess">
+        <PropertyRef Name="acesosid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="users_ibfk_1">
     <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
     <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -533,6 +558,14 @@ warning 6035: The relationship 'remesas_ibfk_2' has columns that are not part of
     <AssociationSet Name="remesas_ibfk_9" Association="Self.remesas_ibfk_9">
       <End Role="bancosempre" EntitySet="bancosempre" />
       <End Role="remesas" EntitySet="remesas" />
+    </AssociationSet>
+    <AssociationSet Name="roleacess_ibfk_1" Association="Self.roleacess_ibfk_1">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="roleacess" EntitySet="roleacess" />
+    </AssociationSet>
+    <AssociationSet Name="roleacess_ibfk_2" Association="Self.roleacess_ibfk_2">
+      <End Role="acesos" EntitySet="acesos" />
+      <End Role="roleacess" EntitySet="roleacess" />
     </AssociationSet>
     <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
       <End Role="roles" EntitySet="roles" />

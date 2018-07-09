@@ -38,11 +38,13 @@
         <AssociationConnector Association="remesasModel.remesas_ibfk_7" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_10" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_8" />
-        <EntityTypeShape EntityType="remesasModel.acesos" Width="1.5" PointX="3.375" PointY="4.75" />
-        <EntityTypeShape EntityType="remesasModel.roleacess" Width="1.5" PointX="5.375" PointY="5.75" />
         <EntityTypeShape EntityType="remesasModel.roles" Width="1.5" PointX="15.375" PointY="15.125" />
         <EntityTypeShape EntityType="remesasModel.users" Width="1.5" PointX="17.625" PointY="14" />
         <AssociationConnector Association="remesasModel.users_ibfk_1" />
+        <EntityTypeShape EntityType="remesasModel.acesos" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="remesasModel.roleacess" Width="1.5" PointX="17.625" PointY="10.375" />
+        <AssociationConnector Association="remesasModel.roleacess_ibfk_2" />
+        <AssociationConnector Association="remesasModel.roleacess_ibfk_1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
