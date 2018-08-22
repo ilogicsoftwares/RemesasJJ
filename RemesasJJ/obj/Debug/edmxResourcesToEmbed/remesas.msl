@@ -1,106 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="remesasModelStoreContainer" CdmEntityContainer="remesasEntities">
-    <EntitySetMapping Name="clientes">
-      <EntityTypeMapping TypeName="remesasModel.clientes">
-        <MappingFragment StoreEntitySet="clientes">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="cedula" ColumnName="cedula" />
-          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
-          <ScalarProperty Name="correo" ColumnName="correo" />
-          <ScalarProperty Name="telefono" ColumnName="telefono" />
-          <ScalarProperty Name="fechaIni" ColumnName="fechaIni" />
-          <ScalarProperty Name="fechaLastP" ColumnName="fechaLastP" />
-          <ScalarProperty Name="UltimaCuenta" ColumnName="UltimaCuenta" />
-          <ScalarProperty Name="ultimoBeneficiario" ColumnName="ultimoBeneficiario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="country">
-      <EntityTypeMapping TypeName="remesasModel.country">
-        <MappingFragment StoreEntitySet="country">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="estatus" ColumnName="estatus" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="estatus">
-      <EntityTypeMapping TypeName="remesasModel.estatus">
-        <MappingFragment StoreEntitySet="estatus">
-          <ScalarProperty Name="estatus1" ColumnName="estatus" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="beneficiarios">
-      <EntityTypeMapping TypeName="remesasModel.beneficiarios">
-        <MappingFragment StoreEntitySet="beneficiarios">
-          <ScalarProperty Name="cliente" ColumnName="cliente" />
-          <ScalarProperty Name="ultimaRemesa" ColumnName="ultimaRemesa" />
-          <ScalarProperty Name="cedulaType" ColumnName="cedulaType" />
-          <ScalarProperty Name="cuentaType" ColumnName="cuentaType" />
-          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
-          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
-          <ScalarProperty Name="cedula" ColumnName="cedula" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="cambio">
-      <EntityTypeMapping TypeName="remesasModel.cambio">
-        <MappingFragment StoreEntitySet="cambio">
-          <ScalarProperty Name="estatus" ColumnName="estatus" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-          <ScalarProperty Name="bolivares" ColumnName="bolivares" />
-          <ScalarProperty Name="cambio1" ColumnName="cambio" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="remesatype">
-      <EntityTypeMapping TypeName="remesasModel.remesatype">
-        <MappingFragment StoreEntitySet="remesatype">
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="pagotype">
-      <EntityTypeMapping TypeName="remesasModel.pagotype">
-        <MappingFragment StoreEntitySet="pagotype">
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="pagosremesa">
-      <EntityTypeMapping TypeName="remesasModel.pagosremesa">
-        <MappingFragment StoreEntitySet="pagosremesa">
-          <ScalarProperty Name="procesedBy" ColumnName="procesedBy" />
-          <ScalarProperty Name="addedBy" ColumnName="addedBy" />
-          <ScalarProperty Name="estatus" ColumnName="estatus" />
-          <ScalarProperty Name="procesed" ColumnName="procesed" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-          <ScalarProperty Name="remesaType" ColumnName="remesaType" />
-          <ScalarProperty Name="tickeID" ColumnName="tickeID" />
-          <ScalarProperty Name="banco" ColumnName="banco" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sendgrid">
-      <EntityTypeMapping TypeName="remesasModel.sendgrid">
-        <MappingFragment StoreEntitySet="sendgrid">
-          <ScalarProperty Name="llave" ColumnName="llave" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="cedulatype">
-      <EntityTypeMapping TypeName="remesasModel.cedulatype">
-        <MappingFragment StoreEntitySet="cedulatype">
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+    <EntitySetMapping Name="acesos">
+      <EntityTypeMapping TypeName="remesasModel.acesos">
+        <MappingFragment StoreEntitySet="acesos">
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="link" ColumnName="link" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
@@ -113,23 +19,6 @@
           <ScalarProperty Name="titular" ColumnName="titular" />
           <ScalarProperty Name="cuentaNumero" ColumnName="cuentaNumero" />
           <ScalarProperty Name="cuentaType" ColumnName="cuentaType" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="cuentastype">
-      <EntityTypeMapping TypeName="remesasModel.cuentastype">
-        <MappingFragment StoreEntitySet="cuentastype">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="moneda">
-      <EntityTypeMapping TypeName="remesasModel.moneda">
-        <MappingFragment StoreEntitySet="moneda">
-          <ScalarProperty Name="sing" ColumnName="sing" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
@@ -163,9 +52,120 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="beneficiarios">
+      <EntityTypeMapping TypeName="remesasModel.beneficiarios">
+        <MappingFragment StoreEntitySet="beneficiarios">
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="ultimaRemesa" ColumnName="ultimaRemesa" />
+          <ScalarProperty Name="cedulaType" ColumnName="cedulaType" />
+          <ScalarProperty Name="cuentaType" ColumnName="cuentaType" />
+          <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cambio">
+      <EntityTypeMapping TypeName="remesasModel.cambio">
+        <MappingFragment StoreEntitySet="cambio">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="bolivares" ColumnName="bolivares" />
+          <ScalarProperty Name="cambio1" ColumnName="cambio" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cedulatype">
+      <EntityTypeMapping TypeName="remesasModel.cedulatype">
+        <MappingFragment StoreEntitySet="cedulatype">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="remesasModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="ultimoBeneficiario" ColumnName="ultimoBeneficiario" />
+          <ScalarProperty Name="UltimaCuenta" ColumnName="UltimaCuenta" />
+          <ScalarProperty Name="fechaLastP" ColumnName="fechaLastP" />
+          <ScalarProperty Name="fechaIni" ColumnName="fechaIni" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="country">
+      <EntityTypeMapping TypeName="remesasModel.country">
+        <MappingFragment StoreEntitySet="country">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuentastype">
+      <EntityTypeMapping TypeName="remesasModel.cuentastype">
+        <MappingFragment StoreEntitySet="cuentastype">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estatus">
+      <EntityTypeMapping TypeName="remesasModel.estatus">
+        <MappingFragment StoreEntitySet="estatus">
+          <ScalarProperty Name="estatus1" ColumnName="estatus" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="moneda">
+      <EntityTypeMapping TypeName="remesasModel.moneda">
+        <MappingFragment StoreEntitySet="moneda">
+          <ScalarProperty Name="sing" ColumnName="sing" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagosremesa">
+      <EntityTypeMapping TypeName="remesasModel.pagosremesa">
+        <MappingFragment StoreEntitySet="pagosremesa">
+          <ScalarProperty Name="procesedBy" ColumnName="procesedBy" />
+          <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="procesed" ColumnName="procesed" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="remesaType" ColumnName="remesaType" />
+          <ScalarProperty Name="tickeID" ColumnName="tickeID" />
+          <ScalarProperty Name="banco" ColumnName="banco" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagotype">
+      <EntityTypeMapping TypeName="remesasModel.pagotype">
+        <MappingFragment StoreEntitySet="pagotype">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="remesas">
       <EntityTypeMapping TypeName="remesasModel.remesas">
         <MappingFragment StoreEntitySet="remesas">
+          <ScalarProperty Name="editadaPor" ColumnName="editadaPor" />
+          <ScalarProperty Name="AnuladaPor" ColumnName="AnuladaPor" />
+          <ScalarProperty Name="CreadaPor" ColumnName="CreadaPor" />
+          <ScalarProperty Name="procesadaPor" ColumnName="procesadaPor" />
+          <ScalarProperty Name="editadael" ColumnName="editadael" />
           <ScalarProperty Name="unulaDetail" ColumnName="unulaDetail" />
           <ScalarProperty Name="BancoTrans" ColumnName="BancoTrans" />
           <ScalarProperty Name="imgTrans" ColumnName="imgTrans" />
@@ -199,10 +199,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="remesatype">
+      <EntityTypeMapping TypeName="remesasModel.remesatype">
+        <MappingFragment StoreEntitySet="remesatype">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roleacess">
+      <EntityTypeMapping TypeName="remesasModel.roleacess">
+        <MappingFragment StoreEntitySet="roleacess">
+          <ScalarProperty Name="acesosid" ColumnName="acesosid" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="roles">
       <EntityTypeMapping TypeName="remesasModel.roles">
         <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="esAdmin" ColumnName="esAdmin" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sendgrid">
+      <EntityTypeMapping TypeName="remesasModel.sendgrid">
+        <MappingFragment StoreEntitySet="sendgrid">
+          <ScalarProperty Name="llave" ColumnName="llave" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -222,25 +248,6 @@
           <ScalarProperty Name="clave" ColumnName="clave" />
           <ScalarProperty Name="correo" ColumnName="correo" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="acesos">
-      <EntityTypeMapping TypeName="remesasModel.acesos">
-        <MappingFragment StoreEntitySet="acesos">
-          <ScalarProperty Name="active" ColumnName="active" />
-          <ScalarProperty Name="link" ColumnName="link" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="roleacess">
-      <EntityTypeMapping TypeName="remesasModel.roleacess">
-        <MappingFragment StoreEntitySet="roleacess">
-          <ScalarProperty Name="acesosid" ColumnName="acesosid" />
-          <ScalarProperty Name="roleid" ColumnName="roleid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

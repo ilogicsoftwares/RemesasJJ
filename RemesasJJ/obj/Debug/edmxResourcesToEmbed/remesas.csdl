@@ -1,54 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="remesasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="clientes">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cedula" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="fechaIni" Type="DateTime" />
-    <Property Name="fechaLastP" Type="DateTime" />
-    <Property Name="UltimaCuenta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ultimoBeneficiario" Type="Int32" />
-    <NavigationProperty Name="beneficiarios" Relationship="remesasModel.beneficiarios_ibfk_1" FromRole="clientes" ToRole="beneficiarios" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_4" FromRole="clientes" ToRole="remesas" />
-  </EntityType>
-  <EntityType Name="country">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="estatus" Type="SByte" Nullable="false" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_6" FromRole="country" ToRole="remesas" />
-  </EntityType>
   <EntityContainer Name="remesasEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="clientes" EntityType="Self.clientes" />
-    <EntitySet Name="country" EntityType="Self.country" />
-    <EntitySet Name="estatus" EntityType="remesasModel.estatus" />
-    <EntitySet Name="beneficiarios" EntityType="remesasModel.beneficiarios" />
-    <AssociationSet Name="beneficiarios_ibfk_1" Association="remesasModel.beneficiarios_ibfk_1">
-      <End Role="clientes" EntitySet="clientes" />
-      <End Role="beneficiarios" EntitySet="beneficiarios" />
-    </AssociationSet>
-    <EntitySet Name="cambio" EntityType="remesasModel.cambio" />
-    <EntitySet Name="remesatype" EntityType="remesasModel.remesatype" />
-    <EntitySet Name="pagotype" EntityType="remesasModel.pagotype" />
-    <EntitySet Name="pagosremesa" EntityType="remesasModel.pagosremesa" />
-    <AssociationSet Name="pagosremesa_ibfk_1" Association="remesasModel.pagosremesa_ibfk_1">
-      <End Role="pagotype" EntitySet="pagotype" />
-      <End Role="pagosremesa" EntitySet="pagosremesa" />
-    </AssociationSet>
-    <EntitySet Name="sendgrid" EntityType="remesasModel.sendgrid" />
-    <EntitySet Name="cedulatype" EntityType="remesasModel.cedulatype" />
+    <EntitySet Name="acesos" EntityType="remesasModel.acesos" />
     <EntitySet Name="bancos" EntityType="remesasModel.bancos" />
-    <EntitySet Name="cuentastype" EntityType="remesasModel.cuentastype" />
-    <EntitySet Name="moneda" EntityType="remesasModel.moneda" />
     <EntitySet Name="bancosempre" EntityType="remesasModel.bancosempre" />
     <EntitySet Name="bancostrans" EntityType="remesasModel.bancostrans" />
+    <EntitySet Name="beneficiarios" EntityType="remesasModel.beneficiarios" />
+    <EntitySet Name="cambio" EntityType="remesasModel.cambio" />
+    <EntitySet Name="cedulatype" EntityType="remesasModel.cedulatype" />
+    <EntitySet Name="clientes" EntityType="remesasModel.clientes" />
+    <EntitySet Name="country" EntityType="remesasModel.country" />
+    <EntitySet Name="cuentastype" EntityType="remesasModel.cuentastype" />
+    <EntitySet Name="estatus" EntityType="remesasModel.estatus" />
+    <EntitySet Name="moneda" EntityType="remesasModel.moneda" />
+    <EntitySet Name="pagosremesa" EntityType="remesasModel.pagosremesa" />
+    <EntitySet Name="pagotype" EntityType="remesasModel.pagotype" />
+    <EntitySet Name="remesas" EntityType="remesasModel.remesas" />
+    <EntitySet Name="remesatype" EntityType="remesasModel.remesatype" />
+    <EntitySet Name="roleacess" EntityType="remesasModel.roleacess" />
+    <EntitySet Name="roles" EntityType="remesasModel.roles" />
+    <EntitySet Name="sendgrid" EntityType="remesasModel.sendgrid" />
+    <EntitySet Name="users" EntityType="remesasModel.users" />
+    <AssociationSet Name="roleacess_ibfk_2" Association="remesasModel.roleacess_ibfk_2">
+      <End Role="acesos" EntitySet="acesos" />
+      <End Role="roleacess" EntitySet="roleacess" />
+    </AssociationSet>
+    <AssociationSet Name="remesas_ibfk_1" Association="remesasModel.remesas_ibfk_1">
+      <End Role="bancos" EntitySet="bancos" />
+      <End Role="remesas" EntitySet="remesas" />
+    </AssociationSet>
     <AssociationSet Name="bancosempre_ibfk_1" Association="remesasModel.bancosempre_ibfk_1">
       <End Role="moneda" EntitySet="moneda" />
       <End Role="bancosempre" EntitySet="bancosempre" />
@@ -56,6 +36,10 @@
     <AssociationSet Name="bancosempre_ibfk_2" Association="remesasModel.bancosempre_ibfk_2">
       <End Role="cuentastype" EntitySet="cuentastype" />
       <End Role="bancosempre" EntitySet="bancosempre" />
+    </AssociationSet>
+    <AssociationSet Name="remesas_ibfk_9" Association="remesasModel.remesas_ibfk_9">
+      <End Role="bancosempre" EntitySet="bancosempre" />
+      <End Role="remesas" EntitySet="remesas" />
     </AssociationSet>
     <AssociationSet Name="bancostrans_ibfk_1" Association="remesasModel.bancostrans_ibfk_1">
       <End Role="moneda" EntitySet="moneda" />
@@ -65,18 +49,13 @@
       <End Role="cuentastype" EntitySet="cuentastype" />
       <End Role="bancostrans" EntitySet="bancostrans" />
     </AssociationSet>
-    <EntitySet Name="remesas" EntityType="remesasModel.remesas" />
-    <AssociationSet Name="remesas_ibfk_1" Association="remesasModel.remesas_ibfk_1">
-      <End Role="bancos" EntitySet="bancos" />
-      <End Role="remesas" EntitySet="remesas" />
-    </AssociationSet>
-    <AssociationSet Name="remesas_ibfk_9" Association="remesasModel.remesas_ibfk_9">
-      <End Role="bancosempre" EntitySet="bancosempre" />
-      <End Role="remesas" EntitySet="remesas" />
-    </AssociationSet>
     <AssociationSet Name="remesas_ibfk_12" Association="remesasModel.remesas_ibfk_12">
       <End Role="bancostrans" EntitySet="bancostrans" />
       <End Role="remesas" EntitySet="remesas" />
+    </AssociationSet>
+    <AssociationSet Name="beneficiarios_ibfk_1" Association="remesasModel.beneficiarios_ibfk_1">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="beneficiarios" EntitySet="beneficiarios" />
     </AssociationSet>
     <AssociationSet Name="remesas_ibfk_3" Association="remesasModel.remesas_ibfk_3">
       <End Role="cambio" EntitySet="cambio" />
@@ -106,133 +85,33 @@
       <End Role="moneda" EntitySet="moneda" />
       <End Role="remesas" EntitySet="remesas" />
     </AssociationSet>
+    <AssociationSet Name="pagosremesa_ibfk_1" Association="remesasModel.pagosremesa_ibfk_1">
+      <End Role="pagotype" EntitySet="pagotype" />
+      <End Role="pagosremesa" EntitySet="pagosremesa" />
+    </AssociationSet>
     <AssociationSet Name="remesas_ibfk_8" Association="remesasModel.remesas_ibfk_8">
       <End Role="remesatype" EntitySet="remesatype" />
       <End Role="remesas" EntitySet="remesas" />
-    </AssociationSet>
-    <EntitySet Name="roles" EntityType="remesasModel.roles" />
-    <EntitySet Name="users" EntityType="remesasModel.users" />
-    <AssociationSet Name="users_ibfk_1" Association="remesasModel.users_ibfk_1">
-      <End Role="roles" EntitySet="roles" />
-      <End Role="users" EntitySet="users" />
-    </AssociationSet>
-    <EntitySet Name="acesos" EntityType="remesasModel.acesos" />
-    <EntitySet Name="roleacess" EntityType="remesasModel.roleacess" />
-    <AssociationSet Name="roleacess_ibfk_2" Association="remesasModel.roleacess_ibfk_2">
-      <End Role="acesos" EntitySet="acesos" />
-      <End Role="roleacess" EntitySet="roleacess" />
     </AssociationSet>
     <AssociationSet Name="roleacess_ibfk_1" Association="remesasModel.roleacess_ibfk_1">
       <End Role="roles" EntitySet="roles" />
       <End Role="roleacess" EntitySet="roleacess" />
     </AssociationSet>
+    <AssociationSet Name="users_ibfk_1" Association="remesasModel.users_ibfk_1">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="estatus">
+  <EntityType Name="acesos">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="estatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_7" FromRole="estatus" ToRole="remesas" />
-  </EntityType>
-  <EntityType Name="beneficiarios">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="cedula" />
-      <PropertyRef Name="cliente" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cedula" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="cuenta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="cuentaType" Type="Int32" />
-    <Property Name="cedulaType" Type="Int32" />
-    <Property Name="ultimaRemesa" Type="Int32" />
-    <Property Name="cliente" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="clientes" Relationship="remesasModel.beneficiarios_ibfk_1" FromRole="beneficiarios" ToRole="clientes" />
-  </EntityType>
-  <Association Name="beneficiarios_ibfk_1">
-    <End Type="remesasModel.clientes" Role="clientes" Multiplicity="1" />
-    <End Type="remesasModel.beneficiarios" Role="beneficiarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="clientes">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="beneficiarios">
-        <PropertyRef Name="cliente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="cambio">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cambio1" Type="Decimal" />
-    <Property Name="bolivares" Type="Decimal" />
-    <Property Name="fecha" Type="DateTime" />
-    <Property Name="estatus" Type="Int32" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_3" FromRole="cambio" ToRole="remesas" />
-  </EntityType>
-  <EntityType Name="remesatype">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_8" FromRole="remesatype" ToRole="remesas" />
-  </EntityType>
-  <EntityType Name="pagotype">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="pagosremesa" Relationship="remesasModel.pagosremesa_ibfk_1" FromRole="pagotype" ToRole="pagosremesa" />
-  </EntityType>
-  <EntityType Name="pagosremesa">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="tickeID" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="banco" Type="Int32" Nullable="false" />
-    <Property Name="tickeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="remesaType" Type="Int32" Nullable="false" />
-    <Property Name="fecha" Type="DateTime" />
-    <Property Name="procesed" Type="DateTime" />
-    <Property Name="estatus" Type="Int32" />
-    <Property Name="addedBy" Type="Int32" />
-    <Property Name="procesedBy" Type="Int32" />
-    <NavigationProperty Name="pagotype" Relationship="remesasModel.pagosremesa_ibfk_1" FromRole="pagosremesa" ToRole="pagotype" />
-  </EntityType>
-  <Association Name="pagosremesa_ibfk_1">
-    <End Type="remesasModel.pagotype" Role="pagotype" Multiplicity="0..1" />
-    <End Type="remesasModel.pagosremesa" Role="pagosremesa" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="pagotype">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="pagosremesa">
-        <PropertyRef Name="estatus" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="sendgrid">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="llave" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="cedulatype">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_11" FromRole="cedulatype" ToRole="remesas" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="link" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="SByte" Nullable="false" />
+    <Property Name="peso" Type="Int32" />
+    <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_2" FromRole="acesos" ToRole="roleacess" />
   </EntityType>
   <EntityType Name="bancos">
     <Key>
@@ -245,27 +124,6 @@
     <Property Name="titular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="titularCedula" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_1" FromRole="bancos" ToRole="remesas" />
-  </EntityType>
-  <EntityType Name="cuentastype">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="bancosempre" Relationship="remesasModel.bancosempre_ibfk_2" FromRole="cuentastype" ToRole="bancosempre" />
-    <NavigationProperty Name="bancostrans" Relationship="remesasModel.bancostrans_ibfk_2" FromRole="cuentastype" ToRole="bancostrans" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_5" FromRole="cuentastype" ToRole="remesas" />
-  </EntityType>
-  <EntityType Name="moneda">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="sing" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="bancosempre" Relationship="remesasModel.bancosempre_ibfk_1" FromRole="moneda" ToRole="bancosempre" />
-    <NavigationProperty Name="bancostrans" Relationship="remesasModel.bancostrans_ibfk_1" FromRole="moneda" ToRole="bancostrans" />
-    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_10" FromRole="moneda" ToRole="remesas" />
   </EntityType>
   <EntityType Name="bancosempre">
     <Key>
@@ -299,54 +157,120 @@
     <NavigationProperty Name="cuentastype" Relationship="remesasModel.bancostrans_ibfk_2" FromRole="bancostrans" ToRole="cuentastype" />
     <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_12" FromRole="bancostrans" ToRole="remesas" />
   </EntityType>
-  <Association Name="bancosempre_ibfk_1">
-    <End Type="remesasModel.moneda" Role="moneda" Multiplicity="0..1" />
-    <End Type="remesasModel.bancosempre" Role="bancosempre" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="moneda">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="bancosempre">
-        <PropertyRef Name="monedaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="bancosempre_ibfk_2">
-    <End Type="remesasModel.cuentastype" Role="cuentastype" Multiplicity="1" />
-    <End Type="remesasModel.bancosempre" Role="bancosempre" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="cuentastype">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="bancosempre">
-        <PropertyRef Name="cuentaType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="bancostrans_ibfk_1">
-    <End Type="remesasModel.moneda" Role="moneda" Multiplicity="0..1" />
-    <End Type="remesasModel.bancostrans" Role="bancostrans" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="moneda">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="bancostrans">
-        <PropertyRef Name="monedaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="bancostrans_ibfk_2">
-    <End Type="remesasModel.cuentastype" Role="cuentastype" Multiplicity="1" />
-    <End Type="remesasModel.bancostrans" Role="bancostrans" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="cuentastype">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="bancostrans">
-        <PropertyRef Name="cuentaType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="beneficiarios">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="cedula" />
+      <PropertyRef Name="cliente" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cedula" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cuenta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cuentaType" Type="Int32" />
+    <Property Name="cedulaType" Type="Int32" />
+    <Property Name="ultimaRemesa" Type="Int32" />
+    <Property Name="cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="clientes" Relationship="remesasModel.beneficiarios_ibfk_1" FromRole="beneficiarios" ToRole="clientes" />
+  </EntityType>
+  <EntityType Name="cambio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cambio1" Type="Decimal" />
+    <Property Name="bolivares" Type="Decimal" />
+    <Property Name="fecha" Type="DateTime" />
+    <Property Name="estatus" Type="Int32" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_3" FromRole="cambio" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="cedulatype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_11" FromRole="cedulatype" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cedula" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fechaIni" Type="DateTime" />
+    <Property Name="fechaLastP" Type="DateTime" />
+    <Property Name="UltimaCuenta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ultimoBeneficiario" Type="Int32" />
+    <NavigationProperty Name="beneficiarios" Relationship="remesasModel.beneficiarios_ibfk_1" FromRole="clientes" ToRole="beneficiarios" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_4" FromRole="clientes" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estatus" Type="SByte" Nullable="false" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_6" FromRole="country" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="cuentastype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bancosempre" Relationship="remesasModel.bancosempre_ibfk_2" FromRole="cuentastype" ToRole="bancosempre" />
+    <NavigationProperty Name="bancostrans" Relationship="remesasModel.bancostrans_ibfk_2" FromRole="cuentastype" ToRole="bancostrans" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_5" FromRole="cuentastype" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="estatus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_7" FromRole="estatus" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="moneda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sing" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bancosempre" Relationship="remesasModel.bancosempre_ibfk_1" FromRole="moneda" ToRole="bancosempre" />
+    <NavigationProperty Name="bancostrans" Relationship="remesasModel.bancostrans_ibfk_1" FromRole="moneda" ToRole="bancostrans" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_10" FromRole="moneda" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="pagosremesa">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="tickeID" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="banco" Type="Int32" Nullable="false" />
+    <Property Name="tickeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="remesaType" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" />
+    <Property Name="procesed" Type="DateTime" />
+    <Property Name="estatus" Type="Int32" />
+    <Property Name="addedBy" Type="Int32" />
+    <Property Name="procesedBy" Type="Int32" />
+    <NavigationProperty Name="pagotype" Relationship="remesasModel.pagosremesa_ibfk_1" FromRole="pagosremesa" ToRole="pagotype" />
+  </EntityType>
+  <EntityType Name="pagotype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pagosremesa" Relationship="remesasModel.pagosremesa_ibfk_1" FromRole="pagotype" ToRole="pagosremesa" />
+  </EntityType>
   <EntityType Name="remesas">
     <Key>
       <PropertyRef Name="id" />
@@ -381,6 +305,11 @@
     <Property Name="imgTrans" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="BancoTrans" Type="Int32" />
     <Property Name="unulaDetail" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="editadael" Type="DateTime" />
+    <Property Name="procesadaPor" Type="Int32" />
+    <Property Name="CreadaPor" Type="Int32" />
+    <Property Name="AnuladaPor" Type="Int32" />
+    <Property Name="editadaPor" Type="Int32" />
     <NavigationProperty Name="bancos" Relationship="remesasModel.remesas_ibfk_1" FromRole="remesas" ToRole="bancos" />
     <NavigationProperty Name="bancosempre" Relationship="remesasModel.remesas_ibfk_9" FromRole="remesas" ToRole="bancosempre" />
     <NavigationProperty Name="bancostrans" Relationship="remesasModel.remesas_ibfk_12" FromRole="remesas" ToRole="bancostrans" />
@@ -393,6 +322,72 @@
     <NavigationProperty Name="moneda" Relationship="remesasModel.remesas_ibfk_10" FromRole="remesas" ToRole="moneda" />
     <NavigationProperty Name="remesatype1" Relationship="remesasModel.remesas_ibfk_8" FromRole="remesas" ToRole="remesatype" />
   </EntityType>
+  <EntityType Name="remesatype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="remesas" Relationship="remesasModel.remesas_ibfk_8" FromRole="remesatype" ToRole="remesas" />
+  </EntityType>
+  <EntityType Name="roleacess">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleid" Type="Int32" Nullable="false" />
+    <Property Name="acesosid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="acesos" Relationship="remesasModel.roleacess_ibfk_2" FromRole="roleacess" ToRole="acesos" />
+    <NavigationProperty Name="roles" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roleacess" ToRole="roles" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="esAdmin" Type="SByte" />
+    <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roles" ToRole="roleacess" />
+    <NavigationProperty Name="users" Relationship="remesasModel.users_ibfk_1" FromRole="roles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="sendgrid">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="llave" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" />
+    <Property Name="nombrex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dni" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fechanac" Type="DateTime" />
+    <Property Name="telefonos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="genero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="direccionEntrega" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="roleid" Type="Int32" />
+    <NavigationProperty Name="roles" Relationship="remesasModel.users_ibfk_1" FromRole="users" ToRole="roles" />
+  </EntityType>
+  <Association Name="roleacess_ibfk_2">
+    <End Type="remesasModel.acesos" Role="acesos" Multiplicity="1" />
+    <End Type="remesasModel.roleacess" Role="roleacess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="acesos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="roleacess">
+        <PropertyRef Name="acesosid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="remesas_ibfk_1">
     <End Type="remesasModel.bancos" Role="bancos" Multiplicity="0..1" />
     <End Type="remesasModel.remesas" Role="remesas" Multiplicity="*" />
@@ -402,6 +397,30 @@
       </Principal>
       <Dependent Role="remesas">
         <PropertyRef Name="bancoBenef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bancosempre_ibfk_1">
+    <End Type="remesasModel.moneda" Role="moneda" Multiplicity="0..1" />
+    <End Type="remesasModel.bancosempre" Role="bancosempre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moneda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancosempre">
+        <PropertyRef Name="monedaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bancosempre_ibfk_2">
+    <End Type="remesasModel.cuentastype" Role="cuentastype" Multiplicity="1" />
+    <End Type="remesasModel.bancosempre" Role="bancosempre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentastype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancosempre">
+        <PropertyRef Name="cuentaType" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -417,6 +436,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="bancostrans_ibfk_1">
+    <End Type="remesasModel.moneda" Role="moneda" Multiplicity="0..1" />
+    <End Type="remesasModel.bancostrans" Role="bancostrans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moneda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancostrans">
+        <PropertyRef Name="monedaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bancostrans_ibfk_2">
+    <End Type="remesasModel.cuentastype" Role="cuentastype" Multiplicity="1" />
+    <End Type="remesasModel.bancostrans" Role="bancostrans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentastype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bancostrans">
+        <PropertyRef Name="cuentaType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="remesas_ibfk_12">
     <End Type="remesasModel.bancostrans" Role="bancostrans" Multiplicity="0..1" />
     <End Type="remesasModel.remesas" Role="remesas" Multiplicity="*" />
@@ -426,6 +469,18 @@
       </Principal>
       <Dependent Role="remesas">
         <PropertyRef Name="BancoTrans" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="beneficiarios_ibfk_1">
+    <End Type="remesasModel.clientes" Role="clientes" Multiplicity="1" />
+    <End Type="remesasModel.beneficiarios" Role="beneficiarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="beneficiarios">
+        <PropertyRef Name="cliente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -513,6 +568,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="pagosremesa_ibfk_1">
+    <End Type="remesasModel.pagotype" Role="pagotype" Multiplicity="0..1" />
+    <End Type="remesasModel.pagosremesa" Role="pagosremesa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pagotype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagosremesa">
+        <PropertyRef Name="estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="remesas_ibfk_8">
     <End Type="remesasModel.remesatype" Role="remesatype" Multiplicity="1" />
     <End Type="remesasModel.remesas" Role="remesas" Multiplicity="*" />
@@ -525,78 +592,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="roles">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="users" Relationship="remesasModel.users_ibfk_1" FromRole="roles" ToRole="users" />
-    <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roles" ToRole="roleacess" />
-  </EntityType>
-  <EntityType Name="users">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="correo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="clave" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="fecha" Type="DateTime" />
-    <Property Name="nombrex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dni" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="fechanac" Type="DateTime" />
-    <Property Name="telefonos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="genero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="direccionEntrega" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-    <Property Name="roleid" Type="Int32" />
-    <NavigationProperty Name="roles" Relationship="remesasModel.users_ibfk_1" FromRole="users" ToRole="roles" />
-  </EntityType>
-  <Association Name="users_ibfk_1">
-    <End Type="remesasModel.roles" Role="roles" Multiplicity="0..1" />
-    <End Type="remesasModel.users" Role="users" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="roles">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="users">
-        <PropertyRef Name="roleid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="acesos">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="link" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="active" Type="SByte" Nullable="false" />
-    <NavigationProperty Name="roleacess" Relationship="remesasModel.roleacess_ibfk_2" FromRole="acesos" ToRole="roleacess" />
-  </EntityType>
-  <EntityType Name="roleacess">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="roleid" Type="Int32" Nullable="false" />
-    <Property Name="acesosid" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="acesos" Relationship="remesasModel.roleacess_ibfk_2" FromRole="roleacess" ToRole="acesos" />
-    <NavigationProperty Name="roles" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roleacess" ToRole="roles" />
-  </EntityType>
-  <Association Name="roleacess_ibfk_2">
-    <End Type="remesasModel.acesos" Role="acesos" Multiplicity="1" />
-    <End Type="remesasModel.roleacess" Role="roleacess" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="acesos">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="roleacess">
-        <PropertyRef Name="acesosid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="roleacess_ibfk_1">
     <End Type="remesasModel.roles" Role="roles" Multiplicity="1" />
     <End Type="remesasModel.roleacess" Role="roleacess" Multiplicity="*" />
@@ -605,6 +600,18 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="roleacess">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users_ibfk_1">
+    <End Type="remesasModel.roles" Role="roles" Multiplicity="0..1" />
+    <End Type="remesasModel.users" Role="users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
         <PropertyRef Name="roleid" />
       </Dependent>
     </ReferentialConstraint>

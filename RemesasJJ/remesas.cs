@@ -44,6 +44,11 @@ namespace RemesasJJ
         public string imgTrans { get; set; }
         public Nullable<int> BancoTrans { get; set; }
         public string unulaDetail { get; set; }
+        public Nullable<System.DateTime> editadael { get; set; }
+        public Nullable<int> procesadaPor { get; set; }
+        public Nullable<int> CreadaPor { get; set; }
+        public Nullable<int> AnuladaPor { get; set; }
+        public Nullable<int> editadaPor { get; set; }
     
         public virtual bancos bancos { get; set; }
         public virtual bancosempre bancosempre { get; set; }

@@ -5,31 +5,35 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="93a03cb519d842f4ad5910e97d0ad995" Name="Diagram1">
-        <EntityTypeShape EntityType="remesasModel.clientes" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="remesasModel.country" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="remesasModel.estatus" Width="1.5" PointX="7.5" PointY="3.25" />
-        <EntityTypeShape EntityType="remesasModel.beneficiarios" Width="1.5" PointX="3" PointY="10" />
-        <AssociationConnector Association="remesasModel.beneficiarios_ibfk_1" />
-        <EntityTypeShape EntityType="remesasModel.cambio" Width="1.5" PointX="3.375" PointY="0.875" />
-        <EntityTypeShape EntityType="remesasModel.remesatype" Width="1.5" PointX="7.5" PointY="8.375" />
-        <EntityTypeShape EntityType="remesasModel.pagotype" Width="1.5" PointX="10.375" PointY="1.625" />
-        <EntityTypeShape EntityType="remesasModel.pagosremesa" Width="1.5" PointX="12.625" PointY="1" />
-        <AssociationConnector Association="remesasModel.pagosremesa_ibfk_1" />
-        <EntityTypeShape EntityType="remesasModel.sendgrid" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="remesasModel.cedulatype" Width="1.5" PointX="7.5" PointY="0.75" />
-        <EntityTypeShape EntityType="remesasModel.bancos" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="remesasModel.cuentastype" Width="1.5" PointX="7.875" PointY="11.625" />
-        <EntityTypeShape EntityType="remesasModel.moneda" Width="1.5" PointX="4.875" PointY="13.5" />
-        <EntityTypeShape EntityType="remesasModel.bancosempre" Width="1.5" PointX="10.125" PointY="12.125" />
-        <EntityTypeShape EntityType="remesasModel.bancostrans" Width="1.5" PointX="13.125" PointY="12.125" />
+        <EntityTypeShape EntityType="remesasModel.acesos" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="remesasModel.bancos" Width="1.5" PointX="6" PointY="15.125" />
+        <EntityTypeShape EntityType="remesasModel.bancosempre" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="remesasModel.bancostrans" Width="1.5" PointX="6" PointY="7.25" />
+        <EntityTypeShape EntityType="remesasModel.beneficiarios" Width="1.5" PointX="8.25" PointY="18.375" />
+        <EntityTypeShape EntityType="remesasModel.cambio" Width="1.5" PointX="6" PointY="24.375" />
+        <EntityTypeShape EntityType="remesasModel.cedulatype" Width="1.5" PointX="6" PointY="29.875" />
+        <EntityTypeShape EntityType="remesasModel.clientes" Width="1.5" PointX="6" PointY="18.25" />
+        <EntityTypeShape EntityType="remesasModel.country" Width="1.5" PointX="6" PointY="27.375" />
+        <EntityTypeShape EntityType="remesasModel.cuentastype" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="remesasModel.estatus" Width="1.5" PointX="6" PointY="22.125" />
+        <EntityTypeShape EntityType="remesasModel.moneda" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="remesasModel.pagosremesa" Width="1.5" PointX="5" PointY="1.5" />
+        <EntityTypeShape EntityType="remesasModel.pagotype" Width="1.5" PointX="2.75" PointY="2.125" />
+        <EntityTypeShape EntityType="remesasModel.remesas" Width="1.5" PointX="8.25" PointY="3.875" />
+        <EntityTypeShape EntityType="remesasModel.remesatype" Width="1.5" PointX="6" PointY="12.75" />
+        <EntityTypeShape EntityType="remesasModel.roleacess" Width="1.5" PointX="13" PointY="2.875" />
+        <EntityTypeShape EntityType="remesasModel.roles" Width="1.5" PointX="10.75" PointY="3.875" />
+        <EntityTypeShape EntityType="remesasModel.sendgrid" Width="1.5" PointX="7.75" PointY="1.25" />
+        <EntityTypeShape EntityType="remesasModel.users" Width="1.5" PointX="13" PointY="5.75" />
+        <AssociationConnector Association="remesasModel.roleacess_ibfk_2" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_1" />
         <AssociationConnector Association="remesasModel.bancosempre_ibfk_1" />
         <AssociationConnector Association="remesasModel.bancosempre_ibfk_2" />
+        <AssociationConnector Association="remesasModel.remesas_ibfk_9" />
         <AssociationConnector Association="remesasModel.bancostrans_ibfk_1" />
         <AssociationConnector Association="remesasModel.bancostrans_ibfk_2" />
-        <EntityTypeShape EntityType="remesasModel.remesas" Width="1.5" PointX="15.375" PointY="3.75" />
-        <AssociationConnector Association="remesasModel.remesas_ibfk_1" />
-        <AssociationConnector Association="remesasModel.remesas_ibfk_9" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_12" />
+        <AssociationConnector Association="remesasModel.beneficiarios_ibfk_1" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_3" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_11" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_4" />
@@ -37,15 +41,11 @@
         <AssociationConnector Association="remesasModel.remesas_ibfk_5" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_7" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_10" />
+        <AssociationConnector Association="remesasModel.pagosremesa_ibfk_1" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_8" />
-        <EntityTypeShape EntityType="remesasModel.roles" Width="1.5" PointX="15.375" PointY="15.125" />
-        <EntityTypeShape EntityType="remesasModel.users" Width="1.5" PointX="17.625" PointY="14" />
-        <AssociationConnector Association="remesasModel.users_ibfk_1" />
-        <EntityTypeShape EntityType="remesasModel.acesos" Width="1.5" PointX="7.375" PointY="5.75" />
-        <EntityTypeShape EntityType="remesasModel.roleacess" Width="1.5" PointX="17.625" PointY="10.375" />
-        <AssociationConnector Association="remesasModel.roleacess_ibfk_2" />
         <AssociationConnector Association="remesasModel.roleacess_ibfk_1" />
-        </Diagram>
+        <AssociationConnector Association="remesasModel.users_ibfk_1" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

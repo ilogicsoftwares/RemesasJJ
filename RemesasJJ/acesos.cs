@@ -23,6 +23,7 @@ namespace RemesasJJ
         public string nombre { get; set; }
         public string link { get; set; }
         public sbyte active { get; set; }
+        public Nullable<int> peso { get; set; }
     
         public virtual ICollection<roleacess> roleacess { get; set; }
     }

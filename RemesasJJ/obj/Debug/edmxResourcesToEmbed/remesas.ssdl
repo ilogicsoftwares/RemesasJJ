@@ -8,6 +8,7 @@
     <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="link" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="active" Type="tinyint" Nullable="false" />
+    <Property Name="peso" Type="int" />
   </EntityType>
   <EntityType Name="bancos">
     <Key>
@@ -179,6 +180,11 @@
     <Property Name="imgTrans" Type="varchar" MaxLength="200" />
     <Property Name="BancoTrans" Type="int" />
     <Property Name="unulaDetail" Type="text" />
+    <Property Name="editadael" Type="datetime" Precision="0" />
+    <Property Name="procesadaPor" Type="int" />
+    <Property Name="CreadaPor" Type="int" />
+    <Property Name="AnuladaPor" Type="int" />
+    <Property Name="editadaPor" Type="int" />
   </EntityType>
   <EntityType Name="remesatype">
     <Key>
@@ -201,6 +207,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="esAdmin" Type="tinyint" />
   </EntityType>
   <EntityType Name="sendgrid">
     <Key>

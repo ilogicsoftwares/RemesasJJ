@@ -16,14 +16,15 @@ namespace RemesasJJ
     {
         public roles()
         {
-            this.users = new HashSet<users>();
             this.roleacess = new HashSet<roleacess>();
+            this.users = new HashSet<users>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
+        public Nullable<sbyte> esAdmin { get; set; }
     
-        public virtual ICollection<users> users { get; set; }
         public virtual ICollection<roleacess> roleacess { get; set; }
+        public virtual ICollection<users> users { get; set; }
     }
 }
