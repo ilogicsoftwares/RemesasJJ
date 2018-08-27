@@ -9,3 +9,4 @@ C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debu
 C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\MySql.Data.dll
 C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\RemesasJJ\RemesasJJ\obj\Debug\RemesasJJ.csprojResolveAssemblyReference.cache
