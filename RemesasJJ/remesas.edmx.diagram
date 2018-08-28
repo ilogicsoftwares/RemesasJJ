@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="remesasModel.remesas" Width="1.5" PointX="8.25" PointY="3.875" />
         <EntityTypeShape EntityType="remesasModel.remesatype" Width="1.5" PointX="6" PointY="12.75" />
         <EntityTypeShape EntityType="remesasModel.roleacess" Width="1.5" PointX="13" PointY="2.875" />
-        <EntityTypeShape EntityType="remesasModel.roles" Width="1.5" PointX="10.75" PointY="3.875" />
         <EntityTypeShape EntityType="remesasModel.sendgrid" Width="1.5" PointX="7.75" PointY="1.25" />
         <EntityTypeShape EntityType="remesasModel.users" Width="1.5" PointX="13" PointY="5.75" />
         <AssociationConnector Association="remesasModel.roleacess_ibfk_2" />
@@ -43,9 +42,10 @@
         <AssociationConnector Association="remesasModel.remesas_ibfk_10" />
         <AssociationConnector Association="remesasModel.pagosremesa_ibfk_1" />
         <AssociationConnector Association="remesasModel.remesas_ibfk_8" />
+        <EntityTypeShape EntityType="remesasModel.roles" Width="1.5" PointX="10.75" PointY="5.125" />
         <AssociationConnector Association="remesasModel.roleacess_ibfk_1" />
         <AssociationConnector Association="remesasModel.users_ibfk_1" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
