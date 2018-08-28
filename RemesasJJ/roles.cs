@@ -23,6 +23,7 @@ namespace RemesasJJ
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<sbyte> esAdmin { get; set; }
+        public sbyte Afiliado { get; set; }
     
         public virtual ICollection<roleacess> roleacess { get; set; }
         public virtual ICollection<users> users { get; set; }

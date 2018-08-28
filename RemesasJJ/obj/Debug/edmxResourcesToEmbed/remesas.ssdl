@@ -208,6 +208,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="esAdmin" Type="tinyint" />
+    <Property Name="Afiliado" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="sendgrid">
     <Key>
