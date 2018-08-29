@@ -27,7 +27,7 @@ namespace RemesasJJ.Logics
 
         public IEnumerable<remesas> GetAll()
         {
-            var lista = context.remesas.Include("Bancos").OrderByDescending(x=>x.id).Take(3000).ToList();
+            var lista = context.remesas.Include("Bancos").OrderByDescending(x=>x.id).ToList();
             
             return lista;
         }
