@@ -20,5 +20,6 @@ namespace RemesasJJ
         public string ClaveSendgrid { get; set; }
         public string usuarioEmail { get; set; }
         public string key { get; set; }
+        public Nullable<int> correos { get; set; }
     }
 }

@@ -620,5 +620,6 @@
     <Property Name="ClaveSendgrid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="usuarioEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="correos" Type="Int32" />
   </EntityType>
 </Schema>

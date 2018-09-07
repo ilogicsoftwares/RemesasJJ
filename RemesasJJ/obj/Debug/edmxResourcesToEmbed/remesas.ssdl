@@ -220,6 +220,7 @@
     <Property Name="ClaveSendgrid" Type="varchar" MaxLength="20" />
     <Property Name="usuarioEmail" Type="varchar" MaxLength="50" />
     <Property Name="key" Type="varchar" MaxLength="50" />
+    <Property Name="correos" Type="int" />
   </EntityType>
   <EntityType Name="users">
     <Key>

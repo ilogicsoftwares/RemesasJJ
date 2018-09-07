@@ -248,6 +248,7 @@
     <EntitySetMapping Name="sendgrid">
       <EntityTypeMapping TypeName="remesasModel.sendgrid">
         <MappingFragment StoreEntitySet="sendgrid">
+          <ScalarProperty Name="correos" ColumnName="correos" />
           <ScalarProperty Name="key" ColumnName="key" />
           <ScalarProperty Name="usuarioEmail" ColumnName="usuarioEmail" />
           <ScalarProperty Name="ClaveSendgrid" ColumnName="ClaveSendgrid" />
