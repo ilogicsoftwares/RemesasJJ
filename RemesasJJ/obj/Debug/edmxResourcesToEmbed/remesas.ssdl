@@ -216,6 +216,10 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="llave" Type="char" MaxLength="200" Nullable="false" />
+    <Property Name="usuarioSendGrid" Type="varchar" MaxLength="200" />
+    <Property Name="ClaveSendgrid" Type="varchar" MaxLength="20" />
+    <Property Name="usuarioEmail" Type="varchar" MaxLength="50" />
+    <Property Name="key" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="users">
     <Key>

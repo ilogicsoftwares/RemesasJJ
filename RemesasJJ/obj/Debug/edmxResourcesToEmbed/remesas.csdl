@@ -18,7 +18,6 @@
     <EntitySet Name="remesas" EntityType="remesasModel.remesas" />
     <EntitySet Name="remesatype" EntityType="remesasModel.remesatype" />
     <EntitySet Name="roleacess" EntityType="remesasModel.roleacess" />
-    <EntitySet Name="sendgrid" EntityType="remesasModel.sendgrid" />
     <EntitySet Name="users" EntityType="remesasModel.users" />
     <AssociationSet Name="roleacess_ibfk_2" Association="remesasModel.roleacess_ibfk_2">
       <End Role="acesos" EntitySet="acesos" />
@@ -101,6 +100,7 @@
       <End Role="roles" EntitySet="roles" />
       <End Role="users" EntitySet="users" />
     </AssociationSet>
+    <EntitySet Name="sendgrid" EntityType="remesasModel.sendgrid" />
   </EntityContainer>
   <EntityType Name="acesos">
     <Key>
@@ -339,13 +339,6 @@
     <Property Name="acesosid" Type="Int32" Nullable="false" />
     <NavigationProperty Name="acesos" Relationship="remesasModel.roleacess_ibfk_2" FromRole="roleacess" ToRole="acesos" />
     <NavigationProperty Name="roles" Relationship="remesasModel.roleacess_ibfk_1" FromRole="roleacess" ToRole="roles" />
-  </EntityType>
-  <EntityType Name="sendgrid">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="llave" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -617,4 +610,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="sendgrid">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="llave" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioSendGrid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClaveSendgrid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

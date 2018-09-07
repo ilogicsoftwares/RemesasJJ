@@ -216,14 +216,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sendgrid">
-      <EntityTypeMapping TypeName="remesasModel.sendgrid">
-        <MappingFragment StoreEntitySet="sendgrid">
-          <ScalarProperty Name="llave" ColumnName="llave" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="remesasModel.users">
         <MappingFragment StoreEntitySet="users">
@@ -249,6 +241,18 @@
           <ScalarProperty Name="Afiliado" ColumnName="Afiliado" />
           <ScalarProperty Name="esAdmin" ColumnName="esAdmin" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sendgrid">
+      <EntityTypeMapping TypeName="remesasModel.sendgrid">
+        <MappingFragment StoreEntitySet="sendgrid">
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="usuarioEmail" ColumnName="usuarioEmail" />
+          <ScalarProperty Name="ClaveSendgrid" ColumnName="ClaveSendgrid" />
+          <ScalarProperty Name="usuarioSendGrid" ColumnName="usuarioSendGrid" />
+          <ScalarProperty Name="llave" ColumnName="llave" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
