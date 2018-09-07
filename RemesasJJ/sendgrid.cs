@@ -16,5 +16,9 @@ namespace RemesasJJ
     {
         public int id { get; set; }
         public string llave { get; set; }
+        public string usuarioSendGrid { get; set; }
+        public string ClaveSendgrid { get; set; }
+        public string usuarioEmail { get; set; }
+        public string key { get; set; }
     }
 }

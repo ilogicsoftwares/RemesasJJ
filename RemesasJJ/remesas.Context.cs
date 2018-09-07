@@ -42,8 +42,8 @@ namespace RemesasJJ
         public DbSet<remesas> remesas { get; set; }
         public DbSet<remesatype> remesatype { get; set; }
         public DbSet<roleacess> roleacess { get; set; }
-        public DbSet<sendgrid> sendgrid { get; set; }
         public DbSet<users> users { get; set; }
         public DbSet<roles> roles { get; set; }
+        public DbSet<sendgrid> sendgrid { get; set; }
     }
 }
